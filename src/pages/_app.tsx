@@ -1,4 +1,4 @@
-import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { lightTheme, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import Head from "next/head";
 import { createGlobalStyle } from "styled-components";
 import { WagmiProvider } from "wagmi";
@@ -35,7 +35,10 @@ export default function App({
 }) {
   return (
     <WagmiProvider client={wagmiClient}>
-      <RainbowKitProvider chains={chains}>
+      <RainbowKitProvider
+        chains={chains}
+        theme={lightTheme({ accentColorForeground: "rgb(37, 99, 235)" })}
+      >
         <Head>
           <title>RainbowKit Wallet Connection</title>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -46,7 +49,6 @@ export default function App({
         </Head>
         <div id="gradient" />
         <GlobalStyle />
-        <div id="bg-gradient" />
         <Component {...pageProps} />
       </RainbowKitProvider>
     </WagmiProvider>
